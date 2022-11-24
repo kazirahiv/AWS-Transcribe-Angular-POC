@@ -1,6 +1,6 @@
 Sample POC project for AWS Transcribe
 
-[Try it out](https://transcribe112422.s3.ap-south-1.amazonaws.com/index.html/)
+[Try it out](https://transcribe112422.s3.ap-south-1.amazonaws.com/index.html)
 
 A site demonstrating real-time audio transcription via Amazon Transcribe.
 This Angular demo app uses browser microphone input and client-side JavaScript to demonstrate the real-time streaming audio transcription capability of [Amazon Transcribe](https://aws.amazon.com/transcribe/).
