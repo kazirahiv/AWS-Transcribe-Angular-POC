@@ -4,7 +4,7 @@ Sample POC project for AWS Transcribe
 
 A site demonstrating real-time audio transcription via Amazon Transcribe.
 This Angular demo app uses browser microphone input and client-side JavaScript to demonstrate the real-time streaming audio transcription capability of [Amazon Transcribe](https://aws.amazon.com/transcribe/).
-Get your AWS 'access key' and 'secret' from credentials and setup environment variable as AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY.
+Get your AWS 'access key' and 'secret' from Console account and setup environment variable as AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY.
 
 
 ## Building and running
