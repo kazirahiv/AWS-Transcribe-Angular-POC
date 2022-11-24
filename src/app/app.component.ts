@@ -79,8 +79,8 @@ export class AppComponent {
       'transcribe',
       createHash('sha256').update('', 'utf8').digest('hex'),
       {
-        key: '',
-        secret: '',
+        key: process.env.AWS_ACCESS_KEY_ID,
+        secret: process.env.AWS_SECRET_ACCESS_KEY,
         protocol: 'wss',
         expires: 15,
         region: 'us-east-1',
