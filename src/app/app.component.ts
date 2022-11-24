@@ -19,11 +19,12 @@ const eventStreamMarshaller = new marshaller.EventStreamMarshaller(
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'AngularTranscribe';
   languageCode = 'en-US';
   region = 'us-east-1';
-  sampleRate = 44100;
+  sampleRate = 48000;
   transcription = '';
   socket;
   micStream;
@@ -31,16 +32,12 @@ export class AppComponent {
   transcribeException = false;
   errorText: '';
 
-
-
-
   startRecording() {
     console.log('recording');
     window.navigator.mediaDevices.getUserMedia({
       video: false,
       audio: true
   })
-  
   // ...then we convert the mic stream to binary event stream messages when the promise resolves 
   .then(this.streamAudioToWebSocket) 
   .catch(function (error) {
@@ -49,18 +46,14 @@ export class AppComponent {
   }
   streamAudioToWebSocket = (userMediaStream) => {
     //let's get the mic input from the browser, via the microphone-stream module
-    console.log('start streamAudioToWebSocket');
     this.micStream = new MicrophoneStream();
     this.micStream.setStream(userMediaStream);
-    console.log('start streamAudioToWebSocket22222');
     // Pre-signed URLs are a way to authenticate a request (or WebSocket connection, in this case)
     // via Query Parameters. Learn more: https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html
     let url = this.createPresignedUrlNew();
-    console.log('start streamAudioToWebSocket333333');
     //open up our WebSocket connection
     this.socket = new WebSocket(url);
     this.socket.binaryType = 'arraybuffer';
-    console.log('start streamAudioToWebSocket44444');
     // when we get audio data from the mic, send it to the WebSocket if possible
     this.socket.onopen = () => {
       this.micStream.on('data', rawAudioChunk => {
@@ -86,8 +79,8 @@ export class AppComponent {
       'transcribe',
       createHash('sha256').update('', 'utf8').digest('hex'),
       {
-        key: process.env.AWS_ACCESS_KEY_ID,
-        secret: process.env.AWS_SECRET_ACCESS_KEY,
+        key: '',
+        secret: '',
         protocol: 'wss',
         expires: 15,
         region: 'us-east-1',

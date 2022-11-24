@@ -90,6 +90,8 @@ export const createPresignedURL = function(method, host, path, service, payload,
   query['X-Amz-Credential'] = options.key + '/' + createCredentialScope(options.timestamp, options.region, service);
   query['X-Amz-Date'] = toTime(options.timestamp);
   query['X-Amz-Expires'] = options.expires;
+  query['x-amz-transcribe-enable-partial-results-stabilization'] = true;
+  query['x-amz-transcribe-partial-results-stability'] = 'low';
   query['X-Amz-SignedHeaders'] = createSignedHeaders(options.headers);
   if (options.sessionToken) {
     query['X-Amz-Security-Token'] = options.sessionToken;
